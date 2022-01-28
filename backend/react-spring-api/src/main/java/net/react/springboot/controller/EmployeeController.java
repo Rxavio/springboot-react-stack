@@ -31,4 +31,10 @@ public class EmployeeController {
 	}
 	
 	
+	@GetMapping("/employees/{id}")
+	public Employee getEmployeeById(@PathVariable Long id) {
+		return eRepo.findById(id).get();
+	}
+	
+	
 }
