@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link} from 'react-router-dom';
 const EmployeeList = () => {
 
   return (
@@ -12,6 +13,7 @@ const EmployeeList = () => {
               <th>Name</th>
               <th>Location</th>
               <th>Department</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -20,12 +22,18 @@ const EmployeeList = () => {
                 <td>Kalim</td>
                 <td>Kigali</td>
                 <td>Computer science</td>
+                <td>
+                  <Link className="btn btn-info" to="">Update</Link> 
+                </td>
               </tr>
 
               <tr key="2">
                 <td>Kim</td>
                 <td>Kigali</td>
                 <td>Computer Engineering</td>
+                <td>
+                  <Link className="btn btn-info" to="">Update</Link> 
+                </td>
               </tr>
          
           </tbody>
