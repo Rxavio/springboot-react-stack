@@ -8,14 +8,14 @@ const AddEmployee = () => {
             <h3>Add Employee</h3>
             <hr/>
             <form>
-                <div className="form-group">
+                <div className="form-group mb-2">
                     <input 
                         type="text" 
                         className="form-control col-4" id="name" placeholder="Enter name"
                     />
                 </div>
 
-                <div className="form-group">
+                <div className="form-group mb-2">
                     <input 
                         type="text" 
                         className="form-control col-4"
@@ -23,7 +23,7 @@ const AddEmployee = () => {
                         placeholder="Enter Department"
                     />
                 </div>
-                <div className="form-group">
+                <div className="form-group mb-2">
                     <input 
                         type="text" 
                         className="form-control col-4"
@@ -32,7 +32,7 @@ const AddEmployee = () => {
                     />
                 </div>
                 <div >
-                    <button className="btn btn-primary">Save</button>
+                    <button className="btn btn-primary mt-2">Save</button>
                 </div>
             </form>
             <hr/>
