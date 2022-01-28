@@ -1,18 +1,20 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import EmployeeList from './components/EmployeesList';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 function App() {
   return (
     <BrowserRouter>
       <div>
         <div>
-          <h1>Hello world</h1>
+
+       <Routes> 
+       <Route path='/' element={<EmployeeList />}/>
+      </Routes>
+      
         </div>
       </div>
     </BrowserRouter>
   );
 }
-
-
 export default App;
