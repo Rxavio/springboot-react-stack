@@ -7,6 +7,7 @@ const EmployeeList = () => {
       <h3>List of Employees</h3>
       <hr/>
       <div>
+      <Link to="/add" className="btn btn-primary mb-2">Add Employee</Link>
         <table className="table table-bordered table-striped">
           <thead className="thead-dark">
             <tr>
