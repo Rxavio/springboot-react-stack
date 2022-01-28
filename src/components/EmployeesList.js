@@ -24,6 +24,7 @@ const EmployeeList = () => {
                 <td>Computer science</td>
                 <td>
                   <Link className="btn btn-info" to="">Update</Link> 
+                  <button className="btn btn-danger ml-2">Delete</button>
                 </td>
               </tr>
 
@@ -33,6 +34,7 @@ const EmployeeList = () => {
                 <td>Computer Engineering</td>
                 <td>
                   <Link className="btn btn-info" to="">Update</Link> 
+                  <button className="btn btn-danger ml-2">Delete</button>
                 </td>
               </tr>
          
