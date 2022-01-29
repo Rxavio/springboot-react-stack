@@ -6,7 +6,18 @@ import employeeService from '../services/employee.service';
 const EmployeeList = () => {
  const [employees, setEmployees] = useState([]);
 
-  useEffect(() => {
+//   useEffect(() => {
+//     employeeService.getAll()
+//       .then(response => {
+//         console.log('Printing employees data', response.data);
+//         setEmployees(response.data);
+//       })
+//       .catch(error => {
+//         console.log('Something went wrong', error);
+//       }) 
+//   }, []);
+
+const init = () => {
     employeeService.getAll()
       .then(response => {
         console.log('Printing employees data', response.data);
@@ -15,6 +26,10 @@ const EmployeeList = () => {
       .catch(error => {
         console.log('Something went wrong', error);
       }) 
+  }
+
+  useEffect(() => {
+    init();
   }, []);
 
   const handleDelete = (id) => {
@@ -22,6 +37,7 @@ const EmployeeList = () => {
     employeeService.remove(id)
       .then(response => {
         console.log('employee deleted successfully', response.data);
+        init();
       })
       .catch(error => {
         console.log('Something went wrong', error);
