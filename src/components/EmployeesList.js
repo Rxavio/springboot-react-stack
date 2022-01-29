@@ -41,7 +41,8 @@ const EmployeeList = () => {
                 <td>{employee.location}</td>
                 <td>{employee.department}</td>
                 <td>
-                  <Link className="btn btn-info" to=''>Update</Link>
+                  {/* <Link className="btn btn-info" to=''>Update</Link> */}
+                  <Link className="btn btn-info" to={`/employees/edit/${employee.id}`}>Update</Link>
                   <button className="btn btn-danger ml-2">Delete</button>
                 </td>
               </tr>

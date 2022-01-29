@@ -1,9 +1,10 @@
 import React from 'react';
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 // import { useHistory } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import employeeService from "../services/employee.service";
+import { useEffect } from 'react';
 
 const AddEmployee = () => {
     const[name, setName] = useState('');
@@ -11,22 +12,51 @@ const AddEmployee = () => {
     const[department, setDepartment] = useState('');
     // const history = useHistory();
     const navigate = useNavigate();
+    const {id} = useParams();
 
     const saveEmployee = (e) => {
         e.preventDefault();
         
-        const employee = {name, location, department};
-            //create
-            employeeService.create(employee)
-            .then(response => {
-             console.log("employee added successfully", response.data);
-              // history.push("/");
-              navigate('/')
-            })
-            .catch(error => {
-                console.log('something went wroing', error);
-            });
+        const employee = {name, location, department, id};
+        if(id){
+             //update
+             employeeService.update(employee)
+             .then(response => {
+                 console.log('Employee updated successfully', response.data);
+                //  history.push('/');
+                navigate('/')
+             })
+             .catch(error => {
+                 console.log('Something went wrong', error);
+             })
+        }else{
+             //create
+             employeeService.create(employee)
+             .then(response => {
+              console.log("employee added successfully", response.data);
+               // history.push("/");
+               navigate('/')
+             })
+             .catch(error => {
+                 console.log('something went wroing', error);
+             });
+
+        }    
         }
+
+    useEffect(() => {
+        if (id) {
+            employeeService.get(id)
+                .then(employee => {
+                    setName(employee.data.name);
+                    setLocation(employee.data.location);
+                    setDepartment(employee.data.department);
+                })
+                .catch(error => {
+                    console.log('Something went wrong', error);
+                })
+        }
+    }, [])
     
     return(
         <div className="container">
