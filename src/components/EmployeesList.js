@@ -1,6 +1,22 @@
 import React from 'react';
 import { Link} from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import employeeService from '../services/employee.service';
+
 const EmployeeList = () => {
+ const [employees, setEmployees] = useState([]);
+
+  useEffect(() => {
+    employeeService.getAll()
+      .then(response => {
+        console.log('Printing employees data', response.data);
+        setEmployees(response.data);
+      })
+      .catch(error => {
+        console.log('Something went wrong', error);
+      }) 
+  }, []);
+
 
   return (
     <div className="container">
@@ -18,27 +34,19 @@ const EmployeeList = () => {
             </tr>
           </thead>
           <tbody>
-         
-              <tr key="1">
-                <td>Kalim</td>
-                <td>Kigali</td>
-                <td>Computer science</td>
+          {
+            employees.map(employee => (
+              <tr key={employee.id}>
+                <td>{employee.name}</td>
+                <td>{employee.location}</td>
+                <td>{employee.department}</td>
                 <td>
-                  <Link className="btn btn-info" to="">Update</Link> 
+                  <Link className="btn btn-info" to=''>Update</Link>
                   <button className="btn btn-danger ml-2">Delete</button>
                 </td>
               </tr>
-
-              <tr key="2">
-                <td>Kim</td>
-                <td>Kigali</td>
-                <td>Computer Engineering</td>
-                <td>
-                  <Link className="btn btn-info" to="">Update</Link> 
-                  <button className="btn btn-danger ml-2">Delete</button>
-                </td>
-              </tr>
-         
+            ))
+          }
           </tbody>
         </table>
         
