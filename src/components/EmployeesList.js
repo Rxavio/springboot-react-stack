@@ -17,6 +17,17 @@ const EmployeeList = () => {
       }) 
   }, []);
 
+  const handleDelete = (id) => {
+    console.log('Printing id', id);
+    employeeService.remove(id)
+      .then(response => {
+        console.log('employee deleted successfully', response.data);
+      })
+      .catch(error => {
+        console.log('Something went wrong', error);
+      })
+  }
+
 
   return (
     <div className="container">
@@ -43,7 +54,10 @@ const EmployeeList = () => {
                 <td>
                   {/* <Link className="btn btn-info" to=''>Update</Link> */}
                   <Link className="btn btn-info" to={`/employees/edit/${employee.id}`}>Update</Link>
-                  <button className="btn btn-danger ml-2">Delete</button>
+                  {/* <button className="btn btn-danger ml-2">Delete</button> */}
+                  <button className="btn btn-danger ml-2" onClick={() => {
+                    handleDelete(employee.id);
+                  }}>Delete</button>
                 </td>
               </tr>
             ))
