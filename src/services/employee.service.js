@@ -16,4 +16,8 @@ const update = data => {
     return httpClient.put('/employees', data);
 }
 
-export default { getAll,create,update,get};
+const remove = id => {
+    return httpClient.delete(`/employees/${id}`);
+}
+
+export default { getAll,create,update,get, remove};
