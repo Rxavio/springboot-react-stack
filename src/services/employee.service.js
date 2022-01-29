@@ -4,4 +4,8 @@ const getAll = () => {
     return httpClient.get('/employees');
 }
 
-export default { getAll };
+const create = data => {
+    return httpClient.post("/employees", data);
+}
+
+export default { getAll,create };
