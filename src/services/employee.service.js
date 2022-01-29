@@ -8,4 +8,8 @@ const create = data => {
     return httpClient.post("/employees", data);
 }
 
-export default { getAll,create };
+const update = data => {
+    return httpClient.put('/employees', data);
+}
+
+export default { getAll,create,update};
